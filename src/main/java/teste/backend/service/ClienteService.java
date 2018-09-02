@@ -28,9 +28,8 @@ public class ClienteService {
 		return clienteRepository.findOne(id);
 	}
 
-	public boolean addCliente(Cliente cliente, int grupoId) {
-
-		Grupo grupo = grupoRepository.findOne(grupoId);
+	public boolean addCliente(Cliente cliente) {
+		Grupo grupo = grupoRepository.findOne(cliente.getGrupo().getId());
 		if(grupo!=null) {
 		    cliente.setGrupo(grupo);
 			clienteRepository.save(cliente);
@@ -41,16 +40,9 @@ public class ClienteService {
 		}
 	}
 
-	public boolean updateCliente(Cliente cliente, int grupoId) {
-		Grupo grupo = grupoRepository.findOne(grupoId);
-		if(grupo!=null) {
-		    cliente.setGrupo(grupo);
-			clienteRepository.save(cliente);
-			return true;
-		}
-		else {
-			return false;
-		}
+	public void updateCliente(Cliente cliente) {
+		clienteRepository.save(cliente);
+	
 	}
 
 	public void deleteCliente(int id) {
@@ -59,6 +51,10 @@ public class ClienteService {
 
 	public List<Cliente> getClientes() {
 		return clienteRepository.findAll();
+	}
+
+	public long getCantClientes() {
+		return clienteRepository.count();
 	}
 
 }

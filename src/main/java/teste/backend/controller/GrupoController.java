@@ -43,13 +43,9 @@ public class GrupoController {
 		return grupoService.deleteGrupo(id);
 	}
 
-	/*@GetMapping("/grupos/test")
-	 public void queryMethod(@RequestParam String id,
-	            @RequestParam Map<String, String> queryParameters,
-	            @RequestParam MultiValueMap<String, String> multiMap) {
-	    System.out.println("id=" + id);
-	        System.out.println(queryParameters.get('name'));
-	        System.out.println(multiMap);
-	   }*/
+	@GetMapping("/grupos/count")
+	public long getCantGrupos(){
+		return grupoService.getCantGrupos();
+	}
 
 }

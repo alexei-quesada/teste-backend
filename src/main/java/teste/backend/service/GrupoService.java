@@ -40,4 +40,8 @@ public class GrupoService {
 		return deleted;	
 	}
 
+	public long getCantGrupos() {
+		return grupoRepository.count();
+	}
+
 }

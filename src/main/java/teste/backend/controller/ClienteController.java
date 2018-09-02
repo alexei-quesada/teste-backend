@@ -25,24 +25,29 @@ public class ClienteController {
 		return clienteService.getClientesByGrupo(grupoId);
 	}
 	
-	@GetMapping("/grupos/{grupoId}/clientes/{id}")
+	@GetMapping("/clientes/{id}")
 	public Cliente getClienteById(@PathVariable int id){
 		return clienteService.getClienteById(id);
 	}
 	
-	@PostMapping("/grupos/{grupoId}/clientes")
-	public boolean addCliente(@RequestBody Cliente cliente, @PathVariable int grupoId) {
-		return clienteService.addCliente(cliente, grupoId);
+	@PostMapping("/clientes")
+	public boolean addCliente(@RequestBody Cliente cliente) {
+		return clienteService.addCliente(cliente);
 	}
 	
-	@PutMapping("/grupos/{grupoId}/clientes")
-	public void updateCliente(@RequestBody Cliente cliente, @PathVariable int grupoId) {
-		clienteService.updateCliente(cliente,grupoId);
+	@PutMapping("/clientes")
+	public void updateCliente(@RequestBody Cliente cliente) {
+		clienteService.updateCliente(cliente);
 	}
 	
 	@DeleteMapping("/clientes/{id}")
 	public void deleteCliente(@PathVariable int id){
 		clienteService.deleteCliente(id);
+	}
+	
+	@GetMapping("/clientes/count")
+	public long getCantClientes(){
+		return clienteService.getCantClientes();
 	}
 
 }
